@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -46,27 +47,32 @@ const routes: Routes = [
 
   {
     path: "dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: "category-list",
-    component: CategoryListComponent
+    component: CategoryListComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: "category-add",
-    component: CategoryAddComponent
+    component: CategoryAddComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: "product-list",
-    component: ProductListComponent
+    component: ProductListComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: "product-add",
-    component: ProductAddComponent
+    component: ProductAddComponent,
+    canActivate: [AuthGuard]
   },
 
   {
