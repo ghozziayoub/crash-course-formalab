@@ -1,0 +1,50 @@
+<h1>Bonjour {{name}} </h1>
+<p>Firstname: {{user.firstname}} </p>
+<p>Firstname: {{user.lastname}} </p>
+<p>Firstname: {{user.age}} </p>
+<ul>
+    <li *ngFor="let tech of technos"> {{ tech }} </li>
+</ul>
+
+
+<div *ngIf="students.length == 0" class="alert alert-warning">No students found</div>
+
+<table *ngIf="students.length > 0" class="table" align="center">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Mail</th>
+            <th>Age</th>
+            <th>University</th>
+            <th>ADMIS</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td> <img [src]="student.image" class="w-25"> </td>
+            <td> {{ student.username}} </td>
+            <td> {{ student.mail}} </td>
+            <td> {{ student.age}} </td>
+            <td> {{ student.university}} </td>
+            <td>
+                <!-- badge badeg-danger -->
+                <!-- badge badeg-success -->
+                <span *ngIf="student.isAdmis == false" class="badge badge-danger">TRY AGAIN</span>
+                <span *ngIf="student.isAdmis == true" class="badge badge-success">ADMIS</span>
+            </td>
+            <td>
+                <i (click)="deleteStudent(student)" class="fa fa-trash text-danger"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+
+<h1>Categories</h1>
+
+<ul>
+    <li *ngFor="let category of categoriesList">{{category.name}}</li>
+</ul>

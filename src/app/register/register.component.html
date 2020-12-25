@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container my-5">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+
+        <div class="form-group">
+            <label for="email">Firstame</label>
+            <input type="text" formControlName="firstame" class="form-control" id="firstame">
+            <div *ngIf="firstame?.touched && firstame?.invalid" class="text-danger">
+                <small *ngIf="firstame?.errors?.required">firstame is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Lastname</label>
+            <input type="text" formControlName="lastname" class="form-control" id="lastname">
+            <div *ngIf="lastname?.touched && lastname?.invalid" class="text-danger">
+                <small *ngIf="lastname?.errors?.required">lastname is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" formControlName="email" class="form-control" id="email">
+            <div *ngIf="email?.touched && email?.invalid" class="text-danger">
+                <small *ngIf="email?.errors?.required">Email is required<br></small>
+                <small *ngIf="email?.errors?.email">Invalid Email</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="password">
+            <div *ngIf="password?.touched && password?.invalid" class="text-danger">
+                <small *ngIf="password?.errors?.required">password is required<br></small>
+                <small *ngIf="password?.errors?.minlength">Invalid password</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Confirm Password</label>
+            <input type="password" formControlName="repassword" class="form-control" id="repassword">
+            <div *ngIf="repassword?.touched && repassword?.invalid" class="text-danger">
+                <small *ngIf="repassword?.errors?.required">repassword is required</small>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid" [ngClass]="{'btn-secondary':registerForm.invalid,'btn-primary':registerForm.valid}" class="btn">Submit</button>
+    </form>
+</div>
+<app-footer></app-footer>
